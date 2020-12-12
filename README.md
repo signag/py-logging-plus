@@ -46,7 +46,7 @@ logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
 ```
 
-The only lines which are specific for __loggin_plus__ are marked.
+The only lines which are specific for __logging_plus__ are marked.
 
 ## Logging Function Entry and Exit
 
@@ -66,13 +66,17 @@ logging_plus.unregisterAutoLogEntryExit()
 
 Logging of function entry and exit is generic and automatic and does not require any coding.
 It is implemented by registering a logging function as system __trace function__ (```sys.settrace(autoLogEntryExit)```).
+
 __ATTENTION:__ Since this function may also be used by Python debuggers, it may be necessary to skip this statement when debugging.
 
 Logging of function entry and exit uses a logger with the name of the module in which the function is located (```__name__```).
 
+Logging of function entry and exit uses __logging.DEBUG__ level
+
 ## Supressing Entry/Exit Logging in specific Infrastructure Modules
 
 When activated, the mechanism for automatic logging of function entry and exit is active in __all__ functions within program control flow.
+
 A lot of logging output would, therefore, also be produced by the __logging__ module itself as well as the functions called from there.
 Since this is normally not of interest, logging in specific infrastructure modules and subordinate functions is deactivated by default.
 
@@ -82,9 +86,15 @@ The following statement activates entry/exit logging for all modules.
 logging_plus.noInfrastructureLogging = False
 ```
 
+This affects logging in the following modules as well as any functions in a call stack originating from these modules:
+
+- logging
+- logging_plus
+- inspect
+
 ## Shutdown Behavior
 
-During shutdown of the Python interpreter a special sequence of actions is followed:
+During shutdown of the Python interpreter, a special sequence of actions is followed:
 
 1. Stop main thread
 2. Close open file handlers
