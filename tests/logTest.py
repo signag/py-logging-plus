@@ -7,7 +7,7 @@ import logTestMod
 
 import sys
 
-logger = logging_plus.getLogger()
+logger = logging_plus.getLogger()               #Specific for logging_plus
 mlogger = logging_plus.getLogger(logTestMod.__name__)
 handler = logging.StreamHandler()
 fhandler = logging.FileHandler("./logTest.log","w")
@@ -21,8 +21,8 @@ logger.setLevel(logging.DEBUG)
 #mlogger.addHandler(fhandler)
 mlogger.setLevel(logging.DEBUG)
 
-logging_plus.registerAutoLogEntryExit()
-#loggingext.noInfrastructureLogging = False
+logging_plus.registerAutoLogEntryExit()         #Specific for logging_plus
+#logging_plus.noInfrastructureLogging = False   #Specific for logging_plus
 
 
 def func(x):
