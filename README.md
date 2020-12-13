@@ -31,7 +31,7 @@ pip install logging-plus
 In order to use this logging add-on, you only need to import __logging_plus__ in addition to __logging__
 and instantiate a Logger instance from __logging_plus__ rather than __logging__.
 
-Then in your python will look, for example as follows:
+Then your python code will look, for example, as follows:
 
 ```python
 #!.venv/bin/python3
@@ -104,7 +104,7 @@ During shutdown of the Python interpreter, a special sequence of actions is foll
 6. Process termination
 
 Automatic logging of function entry and exit may cause issues when this would be tried in functions which are run during the shutdown process.
-For example, class destructors ```__del__()```, called during garbage collection, could cause logging issues if a logging file handler is involved, because at this time the shutdown process has already closed any open file handlers.
+For example, class finalizers ```__del__()```, called during garbage collection, could cause logging issues if a logging file handler is involved, because at this time the shutdown process has already closed any open file handlers.
 
 To avoid such issues, __logging_plus__ registers two ```atexit``` routines:
 
@@ -113,11 +113,14 @@ which removes any file handlers found in any of the active loggers
 - ```atexit.register(unregisterAutoLogEntryExit)```
 which disables automatic entry/exit logging
 
-These routines are executed in step 4, above, before garbage collection, with the following consequences in case that objects are not destroyed explicitely but during garbage collection:
+These routines are executed in step 4, above, before garbage collection, with the following consequences in case that objects are not finalized explicitely but during garbage collection:
 
-- there is no automatic logging of destructor (```__del__()```) entry/exit.
+- there is no automatic logging of finalizer (```__del__()```) entry/exit.
 - for explicit logs, there is no file output even for loggers for which a file handler has been registered.
 
+__NOTE:__ in case of explicitely finalizing object instances by using ```del myObj``` to remove all references to an instance, logging within ```__del__()``` is done like in any other function.
+
+(see also chapter 3.3 in <https://docs.python.org/3/reference/datamodel.html#index-70>)
 
 ## Output
 
@@ -157,5 +160,5 @@ The following is an example logging output with automatic entry/exit logging act
 2020-12-12 18:41:05,013 logTestMod           DEBUG        ## Explicit log: B
 ```
 
-The last two lines in his example originate from explicit logging calls in destructors called during garbage collection.
-In case of an explicit call of ```del obj```, also entry and exit of the destructors would have been logged automatically.
+The last two lines in this example originate from explicit logging calls in finalizers called during garbage collection.
+In case of an explicit call of ```del obj```, also entry and exit of the finalizers would have been logged automatically.
