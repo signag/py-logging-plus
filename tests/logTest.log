@@ -1,29 +1,37 @@
-2020-12-12 18:41:04,801 root                 DEBUG    Start
-2020-12-12 18:41:04,809 logTestMod           DEBUG    >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 25 - module logTestMod)
-2020-12-12 18:41:04,838 logTestMod           DEBUG        ## D
-2020-12-12 18:41:04,846 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
-2020-12-12 18:41:04,884 logTestMod           DEBUG            ## A
-2020-12-12 18:41:04,892 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
-2020-12-12 18:41:04,893 logTestMod           DEBUG    <<< Exit  __init__ : Return value: None
-2020-12-12 18:41:04,895 logTestMod           DEBUG    >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 13 - module logTestMod)
-2020-12-12 18:41:04,896 logTestMod           DEBUG    <<< Exit  status : Return value: 1
-2020-12-12 18:41:04,898 logTestMod           DEBUG    >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 17 - module logTestMod)
-2020-12-12 18:41:04,900 logTestMod           DEBUG    <<< Exit  status : Return value: None
-2020-12-12 18:41:04,901 logTestMod           DEBUG    >>> Entry doSomething (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 21 - module logTestMod)
-2020-12-12 18:41:04,931 logTestMod           DEBUG        ## C
-2020-12-12 18:41:04,938 logTestMod           DEBUG    <<< Exit  doSomething : Return value: None
-2020-12-12 18:41:04,940 __main__             DEBUG    >>> Entry func (logTest.py - line 28 - module __main__)
-2020-12-12 18:41:04,972 root                 DEBUG        5 ** 2 = 25
-2020-12-12 18:41:04,980 __main__             DEBUG    <<< Exit  func : Return value: 25
-2020-12-12 18:41:04,982 threading            DEBUG    >>> Entry _shutdown (/usr/lib/python3.7/threading.py - line 1263 - module threading)
-2020-12-12 18:41:04,983 threading            DEBUG    >>> Entry _stop (/usr/lib/python3.7/threading.py - line 968 - module threading)
-2020-12-12 18:41:04,985 threading            DEBUG    <<< Exit  _stop : Return value: None
-2020-12-12 18:41:04,986 threading            DEBUG    >>> Entry _pickSomeNonDaemonThread (/usr/lib/python3.7/threading.py - line 1284 - module threading)
-2020-12-12 18:41:04,988 threading            DEBUG        >>> Entry enumerate (/usr/lib/python3.7/threading.py - line 1244 - module threading)
-2020-12-12 18:41:04,990 threading            DEBUG        <<< Exit  enumerate : Return value: [<_MainThread(MainThread, stopped 547713273872)>]
-2020-12-12 18:41:04,991 threading            DEBUG        >>> Entry daemon (/usr/lib/python3.7/threading.py - line 1104 - module threading)
-2020-12-12 18:41:04,993 threading            DEBUG        <<< Exit  daemon : Return value: False
-2020-12-12 18:41:04,994 threading            DEBUG        >>> Entry is_alive (/usr/lib/python3.7/threading.py - line 1080 - module threading)
-2020-12-12 18:41:04,996 threading            DEBUG        <<< Exit  is_alive : Return value: False
-2020-12-12 18:41:04,998 threading            DEBUG    <<< Exit  _pickSomeNonDaemonThread : Return value: None
-2020-12-12 18:41:04,999 threading            DEBUG    <<< Exit  _shutdown : Return value: None
+2020-12-13 14:08:16,769 root                 DEBUG        ## Explicit log: Start
+2020-12-13 14:08:16,778 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
+2020-12-13 14:08:16,807 logTestMod           DEBUG            ## Explicit log: A - Initializing MyClass
+2020-12-13 14:08:16,815 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
+2020-12-13 14:08:16,816 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 28 - module logTestMod)
+2020-12-13 14:08:16,848 logTestMod           DEBUG            ## Explicit log: F - Initializing subclass MySpecialClass(MyClass)
+2020-12-13 14:08:16,856 logTestMod           DEBUG            >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
+2020-12-13 14:08:16,893 logTestMod           DEBUG                ## Explicit log: A - Initializing MyClass
+2020-12-13 14:08:16,901 logTestMod           DEBUG            <<< Exit  __init__ : Return value: None
+2020-12-13 14:08:16,902 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
+2020-12-13 14:08:16,904 logTestMod           DEBUG        >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 14 - module logTestMod)
+2020-12-13 14:08:16,935 logTestMod           DEBUG            ## Explicit log: C - getter of MyClass
+2020-12-13 14:08:16,942 logTestMod           DEBUG        <<< Exit  status : Return value: 1
+2020-12-13 14:08:16,944 logTestMod           DEBUG        >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 19 - module logTestMod)
+2020-12-13 14:08:16,978 logTestMod           DEBUG            ## Explicit log: D - setter of MyClass
+2020-12-13 14:08:16,987 logTestMod           DEBUG        <<< Exit  status : Return value: None
+2020-12-13 14:08:16,989 logTestMod           DEBUG        >>> Entry doSomething (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 24 - module logTestMod)
+2020-12-13 14:08:17,019 logTestMod           DEBUG            ## Explicit log: E - MyClass method call
+2020-12-13 14:08:17,027 logTestMod           DEBUG        <<< Exit  doSomething : Return value: None
+2020-12-13 14:08:17,029 __main__             DEBUG        >>> Entry func (logTest.py - line 34 - module __main__)
+2020-12-13 14:08:17,063 root                 DEBUG            ## Explicit log: 5 ** 2 = 25
+2020-12-13 14:08:17,071 __main__             DEBUG        <<< Exit  func : Return value: 25
+2020-12-13 14:08:17,073 logTestMod           DEBUG        >>> Entry __del__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 11 - module logTestMod)
+2020-12-13 14:08:17,110 logTestMod           DEBUG            ## Explicit log: B - Finalizing MyClass
+2020-12-13 14:08:17,118 logTestMod           DEBUG        <<< Exit  __del__ : Return value: None
+2020-12-13 14:08:17,121 threading            DEBUG    >>> Entry _shutdown (/usr/lib/python3.7/threading.py - line 1263 - module threading)
+2020-12-13 14:08:17,122 threading            DEBUG        >>> Entry _stop (/usr/lib/python3.7/threading.py - line 968 - module threading)
+2020-12-13 14:08:17,125 threading            DEBUG        <<< Exit  _stop : Return value: None
+2020-12-13 14:08:17,127 threading            DEBUG        >>> Entry _pickSomeNonDaemonThread (/usr/lib/python3.7/threading.py - line 1284 - module threading)
+2020-12-13 14:08:17,129 threading            DEBUG            >>> Entry enumerate (/usr/lib/python3.7/threading.py - line 1244 - module threading)
+2020-12-13 14:08:17,130 threading            DEBUG            <<< Exit  enumerate : Return value: [<_MainThread(MainThread, stopped 548582735888)>]
+2020-12-13 14:08:17,133 threading            DEBUG            >>> Entry daemon (/usr/lib/python3.7/threading.py - line 1104 - module threading)
+2020-12-13 14:08:17,134 threading            DEBUG            <<< Exit  daemon : Return value: False
+2020-12-13 14:08:17,137 threading            DEBUG            >>> Entry is_alive (/usr/lib/python3.7/threading.py - line 1080 - module threading)
+2020-12-13 14:08:17,139 threading            DEBUG            <<< Exit  is_alive : Return value: False
+2020-12-13 14:08:17,141 threading            DEBUG        <<< Exit  _pickSomeNonDaemonThread : Return value: None
+2020-12-13 14:08:17,142 threading            DEBUG    <<< Exit  _shutdown : Return value: None

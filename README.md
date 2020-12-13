@@ -34,7 +34,7 @@ and instantiate a Logger instance from __logging_plus__ rather than __logging__.
 Then your python code will look, for example, as follows:
 
 ```python
-#!.venv/bin/python3
+#!/usr/bin/python3
 import logging
 import logging_plus                               #Specific for logging_plus
 
@@ -124,41 +124,52 @@ __NOTE:__ in case of explicitely finalizing object instances by using ```del myO
 
 ## Output
 
-The following is an example logging output with automatic entry/exit logging activated:
+The following is the logging output from the test module under ./tests with automatic entry/exit logging activated.
+
+The file output can be found at ./tests/logTest.log.
+The file output for a run with full logging is in ./tests/logTestFull.log
 
 ```shell
-2020-12-12 18:41:04,801 root                 DEBUG    Start
-2020-12-12 18:41:04,809 logTestMod           DEBUG    >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 25 - module logTestMod)
-2020-12-12 18:41:04,838 logTestMod           DEBUG        ## Explicit log: D
-2020-12-12 18:41:04,846 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
-2020-12-12 18:41:04,884 logTestMod           DEBUG            ## Explicit log: A
-2020-12-12 18:41:04,892 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
-2020-12-12 18:41:04,893 logTestMod           DEBUG    <<< Exit  __init__ : Return value: None
-2020-12-12 18:41:04,895 logTestMod           DEBUG    >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 13 - module logTestMod)
-2020-12-12 18:41:04,896 logTestMod           DEBUG    <<< Exit  status : Return value: 1
-2020-12-12 18:41:04,898 logTestMod           DEBUG    >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 17 - module logTestMod)
-2020-12-12 18:41:04,900 logTestMod           DEBUG    <<< Exit  status : Return value: None
-2020-12-12 18:41:04,901 logTestMod           DEBUG    >>> Entry doSomething (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 21 - module logTestMod)
-2020-12-12 18:41:04,931 logTestMod           DEBUG        ## Explicit log: C
-2020-12-12 18:41:04,938 logTestMod           DEBUG    <<< Exit  doSomething : Return value: None
-2020-12-12 18:41:04,940 __main__             DEBUG    >>> Entry func (logTest.py - line 28 - module __main__)
-2020-12-12 18:41:04,972 root                 DEBUG        5 ** 2 = 25
-2020-12-12 18:41:04,980 __main__             DEBUG    <<< Exit  func : Return value: 25
-2020-12-12 18:41:04,982 threading            DEBUG    >>> Entry _shutdown (/usr/lib/python3.7/threading.py - line 1263 - module threading)
-2020-12-12 18:41:04,983 threading            DEBUG    >>> Entry _stop (/usr/lib/python3.7/threading.py - line 968 - module threading)
-2020-12-12 18:41:04,985 threading            DEBUG    <<< Exit  _stop : Return value: None
-2020-12-12 18:41:04,986 threading            DEBUG    >>> Entry _pickSomeNonDaemonThread (/usr/lib/python3.7/threading.py - line 1284 - module threading)
-2020-12-12 18:41:04,988 threading            DEBUG        >>> Entry enumerate (/usr/lib/python3.7/threading.py - line 1244 - module threading)
-2020-12-12 18:41:04,990 threading            DEBUG        <<< Exit  enumerate : Return value: [<_MainThread(MainThread, stopped 547713273872)>]
-2020-12-12 18:41:04,991 threading            DEBUG        >>> Entry daemon (/usr/lib/python3.7/threading.py - line 1104 - module threading)
-2020-12-12 18:41:04,993 threading            DEBUG        <<< Exit  daemon : Return value: False
-2020-12-12 18:41:04,994 threading            DEBUG        >>> Entry is_alive (/usr/lib/python3.7/threading.py - line 1080 - module threading)
-2020-12-12 18:41:04,996 threading            DEBUG        <<< Exit  is_alive : Return value: False
-2020-12-12 18:41:04,998 threading            DEBUG    <<< Exit  _pickSomeNonDaemonThread : Return value: None
-2020-12-12 18:41:04,999 threading            DEBUG    <<< Exit  _shutdown : Return value: None
-2020-12-12 18:41:05,012 logTestMod           DEBUG    ## Explicit log: E
-2020-12-12 18:41:05,013 logTestMod           DEBUG        ## Explicit log: B
+2020-12-13 12:37:40,048 root                 DEBUG        Start
+2020-12-13 12:37:40,057 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
+2020-12-13 12:37:40,086 logTestMod           DEBUG            ## Explicit log: A - Initializing MyClass
+2020-12-13 12:37:40,093 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
+2020-12-13 12:37:40,095 logTestMod           DEBUG        >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 27 - module logTestMod)
+2020-12-13 12:37:40,124 logTestMod           DEBUG            ## Explicit log: F - Initializing subclass MySpecialClass(MyClass)
+2020-12-13 12:37:40,132 logTestMod           DEBUG            >>> Entry __init__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 7 - module logTestMod)
+2020-12-13 12:37:40,170 logTestMod           DEBUG                ## Explicit log: A - Initializing MyClass
+2020-12-13 12:37:40,177 logTestMod           DEBUG            <<< Exit  __init__ : Return value: None
+2020-12-13 12:37:40,179 logTestMod           DEBUG        <<< Exit  __init__ : Return value: None
+2020-12-13 12:37:40,180 logTestMod           DEBUG        >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 13 - module logTestMod)
+2020-12-13 12:37:40,210 logTestMod           DEBUG            ## Explicit log: C - getter of MyClass
+2020-12-13 12:37:40,217 logTestMod           DEBUG        <<< Exit  status : Return value: 1
+2020-12-13 12:37:40,219 logTestMod           DEBUG        >>> Entry status (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 18 - module logTestMod)
+2020-12-13 12:37:40,248 logTestMod           DEBUG            ## Explicit log: D - setter of MyClass
+2020-12-13 12:37:40,256 logTestMod           DEBUG        <<< Exit  status : Return value: None
+2020-12-13 12:37:40,257 logTestMod           DEBUG        >>> Entry doSomething (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 23 - module logTestMod)
+2020-12-13 12:37:40,287 logTestMod           DEBUG            ## Explicit log: E - MyClass method call
+2020-12-13 12:37:40,295 logTestMod           DEBUG        <<< Exit  doSomething : Return value: None
+2020-12-13 12:37:40,296 __main__             DEBUG        >>> Entry func (logTest.py - line 26 - module __main__)
+2020-12-13 12:37:40,327 root                 DEBUG            ## Explicit log: 5 ** 2 = 25
+2020-12-13 12:37:40,335 __main__             DEBUG        <<< Exit  func : Return value: 25
+2020-12-13 12:37:40,337 logTestMod           DEBUG        >>> Entry __del__ (/home/pi/dev/py-logging-plus/tests/logTestMod/__init__.py - line 10 - module logTestMod)
+2020-12-13 12:37:40,367 logTestMod           DEBUG            ## Explicit log: B - Finalizing MyClass
+2020-12-13 12:37:40,374 logTestMod           DEBUG        <<< Exit  __del__ : Return value: None
+2020-12-13 12:37:40,377 threading            DEBUG    >>> Entry _shutdown (/usr/lib/python3.7/threading.py - line 1263 - module threading)
+2020-12-13 12:37:40,378 threading            DEBUG        >>> Entry _stop (/usr/lib/python3.7/threading.py - line 968 - module threading)
+2020-12-13 12:37:40,380 threading            DEBUG        <<< Exit  _stop : Return value: None
+2020-12-13 12:37:40,381 threading            DEBUG        >>> Entry _pickSomeNonDaemonThread (/usr/lib/python3.7/threading.py - line 1284 - module threading)
+2020-12-13 12:37:40,383 threading            DEBUG            >>> Entry enumerate (/usr/lib/python3.7/threading.py - line 1244 - module threading)
+2020-12-13 12:37:40,384 threading            DEBUG            <<< Exit  enumerate : Return value: [<_MainThread(MainThread, stopped 547789455376)>]
+2020-12-13 12:37:40,386 threading            DEBUG            >>> Entry daemon (/usr/lib/python3.7/threading.py - line 1104 - module threading)
+2020-12-13 12:37:40,387 threading            DEBUG            <<< Exit  daemon : Return value: False
+2020-12-13 12:37:40,389 threading            DEBUG            >>> Entry is_alive (/usr/lib/python3.7/threading.py - line 1080 - module threading)
+2020-12-13 12:37:40,391 threading            DEBUG            <<< Exit  is_alive : Return value: False
+2020-12-13 12:37:40,392 threading            DEBUG        <<< Exit  _pickSomeNonDaemonThread : Return value: None
+2020-12-13 12:37:40,393 threading            DEBUG    <<< Exit  _shutdown : Return value: None
+2020-12-13 12:37:40,407 logTestMod           DEBUG        ## Explicit log: G - Finalizing subclass MySpecialClass(MyClass)
+2020-12-13 12:37:40,408 logTestMod           DEBUG            ## Explicit log: B - Finalizing MyClass
 ```
 
 The last two lines in this example originate from explicit logging calls in finalizers called during garbage collection.
-In case of an explicit call of ```del obj```, also entry and exit of the finalizers would have been logged automatically.
+In case of an explicit call of ```del obj```, also entry and exit of the finalizers are logged automatically as seen for timestamp 2020-12-13 12:37:40,337.
