@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "logging_plus"
+version = "1.2.0"
+authors = [
+  { name="signag", email="siegfried.nagel@t-online.de" },
+]
+description = "Add-on for Python logging, supporting indentation and generic logging of function entry/exit"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/signag/py-logging-plus"
+Issues = "https://github.com/signag/py-logging-plus/issues"
