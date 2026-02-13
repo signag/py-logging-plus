@@ -59,24 +59,20 @@ class Manager(logging.Manager):
         rv = None
         if not isinstance(name, str):
             raise TypeError('A logger name must be a string')
-        logging._acquireLock()
-        try:
-            if name in self.loggerDict:
-                rv = self.loggerDict[name]
-                if isinstance(rv, logging.PlaceHolder):
-                    ph = rv
-                    rv = (self.loggerClass or _loggerClass)(name)
-                    rv.manager = self
-                    self.loggerDict[name] = rv
-                    self._fixupChildren(ph, rv)
-                    self._fixupParents(rv)
-            else:
+        if name in self.loggerDict:
+            rv = self.loggerDict[name]
+            if isinstance(rv, logging.PlaceHolder):
+                ph = rv
                 rv = (self.loggerClass or _loggerClass)(name)
                 rv.manager = self
                 self.loggerDict[name] = rv
+                self._fixupChildren(ph, rv)
                 self._fixupParents(rv)
-        finally:
-            logging._releaseLock()
+        else:
+            rv = (self.loggerClass or _loggerClass)(name)
+            rv.manager = self
+            self.loggerDict[name] = rv
+            self._fixupParents(rv)
         return rv
 
     def cleanupLoggers(self):
